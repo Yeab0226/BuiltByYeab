@@ -1,0 +1,43 @@
+
+        body:where(.construction-page){
+            background-color: #312f30;
+            color: #fff;
+            text-align: center;
+        }
+        :where(body.construction-page) .construct{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 5%;
+            margin-bottom: 0%;
+            width: 30%;
+            padding-bottom: 0%;
+        }
+        :where(body.construction-page) h1{
+            margin-top: 0%;
+            font-family: sans-serif;
+            font-size: 70px;
+            color: #ffba31;
+            margin-bottom: 0%;
+            padding-top: 0%;
+        }
+        :where(body.construction-page) h2{
+            font-family: sans-serif;
+            font-size: x-large;
+        }
+        :where(body.construction-page) a{
+            color: #fff;
+            text-decoration: none;
+        }
+        @media only screen and (max-width: 600px){
+            :where(body.construction-page) .construct{
+                width: 70%;
+            }
+            :where(body.construction-page) h1{
+                font-size: 60px;
+            }
+            :where(body.construction-page) h2{
+                font-size: larger;
+            }
+        }
+    
