@@ -315,6 +315,25 @@ function Services() {
 function Portfolio() {
   const [revealedCard, setRevealedCard] = useState(null);
   const portfolioRef = useRef(null);
+
+  const resetCards = () => {
+    setRevealedCard(null);
+    const focused = document.activeElement;
+    if (portfolioRef.current?.contains(focused)) {
+      focused?.blur();
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("pageshow", resetCards);
+    window.addEventListener("focus", resetCards);
+
+    return () => {
+      window.removeEventListener("pageshow", resetCards);
+      window.removeEventListener("focus", resetCards);
+    };
+  }, []);
+
   useEffect(() => {
     const dismiss = (event) => {
       if (!portfolioRef.current?.contains(event.target)) setRevealedCard(null);
@@ -354,10 +373,16 @@ function Portfolio() {
                 featuring Q&A, AI-powered document search, group discussions,
                 and private chat.
               </p>
-              <a href="https://evangadiforum.builtbyyeab.com/">
+              <a
+                href="https://evangadiforum.builtbyyeab.com/"
+                onClick={resetCards}
+              >
                 <i className="fa-solid fa-up-right-from-square"></i>
               </a>
-              <a href="https://github.com/Yeab0226/Evangadi-Forum.git">
+              <a
+                href="https://github.com/Yeab0226/Evangadi-Forum.git"
+                onClick={resetCards}
+              >
                 <i className="fa-brands fa-github"></i>
               </a>
             </div>
@@ -381,10 +406,13 @@ function Portfolio() {
                 An AI chat application with a responsive interface for asking
                 questions and receiving conversational answers
               </p>
-              <a href="https://gptclone.builtbyyeab.com/">
+              <a href="https://gptclone.builtbyyeab.com/" onClick={resetCards}>
                 <i className="fa-solid fa-up-right-from-square"></i>
               </a>
-              <a href="https://github.com/Yeab0226/gpt-clone.git">
+              <a
+                href="https://github.com/Yeab0226/gpt-clone.git"
+                onClick={resetCards}
+              >
                 <i className="fa-brands fa-github"></i>
               </a>
             </div>
@@ -408,10 +436,16 @@ function Portfolio() {
                 A responsive Netflix-inspired website featuring movie
                 categories, featured titles, and a streaming-style interface.
               </p>
-              <a href="https://netflix-clone.builtbyyeab.com/">
+              <a
+                href="https://netflix-clone.builtbyyeab.com/"
+                onClick={resetCards}
+              >
                 <i className="fa-solid fa-up-right-from-square"></i>
               </a>
-              <a href="https://github.com/Yeab0226/Netflix-clone.git">
+              <a
+                href="https://github.com/Yeab0226/Netflix-clone.git"
+                onClick={resetCards}
+              >
                 <i className="fa-brands fa-github"></i>
               </a>
             </div>
@@ -429,6 +463,13 @@ function Contact() {
   const [message, setMessage] = useState("");
   const [sending, setSending] = useState(false);
   const submitting = useRef(false);
+
+  const successTimer = useRef(null);
+
+  useEffect(() => {
+    return () => clearTimeout(successTimer.current);
+  }, []);
+
   async function submitContact(event) {
     event.preventDefault();
     if (submitting.current) return;
@@ -437,6 +478,7 @@ function Contact() {
     submitting.current = true;
     setSending(true);
     setMessage("");
+    clearTimeout(successTimer.current);
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
@@ -448,6 +490,9 @@ function Contact() {
       if (!response.ok || result.success !== true)
         throw new Error("Send failed");
       setMessage("Thank you! Your message has been sent.");
+      successTimer.current = setTimeout(() => {
+        setMessage("");
+      }, 5000);
       form.reset();
     } catch {
       setMessage(
@@ -596,9 +641,17 @@ function Construction() {
         available soon.
       </h2>
       <button
-        onClick={() =>
-          window.history.state?.idx > 0 ? navigate(-1) : navigate("/")
-        }
+        onClick={() => {
+          const cameFromThisSite =
+            document.referrer &&
+            new URL(document.referrer).origin === window.location.origin;
+
+          if (window.history.state?.idx > 0 || cameFromThisSite) {
+            window.history.back();
+          } else {
+            navigate("/");
+          }
+        }}
       >
         <i className="fa-solid fa-rotate-left"></i> Go Back
       </button>
@@ -618,8 +671,6 @@ function PageAppearance() {
         construction || import.meta.env.VITE_PREVIEW === "true"
           ? "noindex, follow"
           : "index, follow, max-image-preview:large";
-    if (!window.location.hash)
-      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
   }, [pathname]);
   return null;
 }
