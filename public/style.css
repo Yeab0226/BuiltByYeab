@@ -15,7 +15,7 @@ body:where(:not(.construction-page)) {
 :where(body:not(.construction-page)) #header {
   width: 100%;
   height: 100vh;
-  background-image: url(./images/home.png);
+  background-image: url(./images/home.webp);
   background-size: cover;
   background-position: center;
 }
@@ -240,8 +240,12 @@ body:where(:not(.construction-page)) {
   text-align: center;
 }
 @media (hover: hover) {
-  :where(body:not(.construction-page)) .work:hover img { transform: scale(1.1); }
-  :where(body:not(.construction-page)) .work:hover .layer { height: 100%; }
+  :where(body:not(.construction-page)) .work:hover img {
+    transform: scale(1.1);
+  }
+  :where(body:not(.construction-page)) .work:hover .layer {
+    height: 100%;
+  }
 }
 :where(body:not(.construction-page)) .btn {
   display: block;
@@ -331,7 +335,7 @@ body:where(:not(.construction-page)) {
 
 @media only screen and (max-width: 600px) {
   :where(body:not(.construction-page)) #header {
-    background-image: url(images/for-phone.png);
+    background-image: url(images/for-phone.webp);
   }
   :where(body:not(.construction-page)) .header-text {
     margin-top: 100%;
@@ -418,7 +422,7 @@ body:not(.construction-page) #header::before {
   position: fixed;
   inset: 0;
   z-index: -1;
-  background: url("./images/home.png") center / cover no-repeat;
+  background: url("./images/home.webp") center / cover no-repeat;
 }
 body:not(.construction-page) .site-nav {
   position: fixed;
@@ -493,12 +497,9 @@ body:not(.construction-page) :is(#about, #services, #portfolio, #contact) {
 }
 body:not(.construction-page) .site-footer {
   /* background: #1c1b1d; */
-  background-image: url("images/footer-background.jpg");
+  background-image: url("images/footer-background.webp");
   background-size: cover;
   background-position: center;
-  border-top: 1px solid #49413a;
-  margin-top: 40px;
-  padding: 48px 10% 24px;
 }
 body:not(.construction-page) .footer-main {
   display: flex;
@@ -598,7 +599,7 @@ body:not(.construction-page) .menu-toggle:focus-visible {
 }
 @media (max-width: 600px) {
   body:not(.construction-page) #header::before {
-    background-image: url("./images/for-phone.png");
+    background-image: url("./images/for-phone.webp");
   }
   body:not(.construction-page) .site-nav {
     min-height: 72px;
@@ -802,18 +803,29 @@ body:not(.construction-page) .tab-contents li {
 }
 @media (max-width: 900px) and (orientation: portrait) {
   body:not(.construction-page) #header::before {
-    background-image: url("./images/for-phone.png");
+    background-image: url("./images/for-phone.webp");
   }
 }
 
 /* Keep the existing card reveal available to touch and keyboard users. */
 body:not(.construction-page) .work.is-revealed img,
-body:not(.construction-page) .work:focus-within img { transform: scale(1.1); }
+body:not(.construction-page) .work:focus-within img {
+  transform: scale(1.1);
+}
 body:not(.construction-page) .work.is-revealed .layer,
-body:not(.construction-page) .work:focus-within .layer { height: 100%; }
-body:not(.construction-page) #about .row { align-items: center; }
-body:not(.construction-page) .about-col-1 { display: flex; justify-content: center; }
-body:not(.construction-page) .about-col-1 img { display: block; }
+body:not(.construction-page) .work:focus-within .layer {
+  height: 100%;
+}
+body:not(.construction-page) #about .row {
+  align-items: center;
+}
+body:not(.construction-page) .about-col-1 {
+  display: flex;
+  justify-content: center;
+}
+body:not(.construction-page) .about-col-1 img {
+  display: block;
+}
 /* Anchor the desk artwork to its right-hand focal point on narrow screens. */
 body:not(.construction-page) .site-footer {
   background-position: right center;

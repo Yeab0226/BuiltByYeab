@@ -122,7 +122,12 @@ function About() {
       <div className="container">
         <div className="row">
           <div className="about-col-1">
-            <img src="images/Developer.png" alt="Developer illustration" loading="lazy" decoding="async" />
+            <img
+              src="images/Developer.webp"
+              alt="Developer illustration"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
           <div className="about-col-2">
             <h2 className="sub-title">About Me</h2>
@@ -336,7 +341,12 @@ function Portfolio() {
               if (event.pointerType !== "mouse") setRevealedCard(0);
             }}
           >
-            <img src="images/evangadi-forum.png" alt="Evangadi Forum" loading="lazy" decoding="async" />
+            <img
+              src="images/evangadi-forum.webp"
+              alt="Evangadi Forum"
+              loading="lazy"
+              decoding="async"
+            />
             <div className="layer">
               <h3>Evangadi Forum</h3>
               <p>
@@ -344,10 +354,10 @@ function Portfolio() {
                 featuring Q&A, AI-powered document search, group discussions,
                 and private chat.
               </p>
-              <a href="https://y-socials.netlify.app/">
+              <a href="https://evangadiforum.builtbyyeab.com/">
                 <i className="fa-solid fa-up-right-from-square"></i>
               </a>
-              <a href="https://github.com/Yeab0226/Social-media-app">
+              <a href="https://github.com/Yeab0226/Evangadi-Forum.git">
                 <i className="fa-brands fa-github"></i>
               </a>
             </div>
@@ -359,17 +369,22 @@ function Portfolio() {
               if (event.pointerType !== "mouse") setRevealedCard(1);
             }}
           >
-            <img src="images/gpt-clone.png" alt="Chat GPT Clone" loading="lazy" decoding="async" />
+            <img
+              src="images/gpt-clone.webp"
+              alt="Chat GPT Clone"
+              loading="lazy"
+              decoding="async"
+            />
             <div className="layer">
               <h3>Chat GPT Clone</h3>
               <p>
                 An AI chat application with a responsive interface for asking
                 questions and receiving conversational answers
               </p>
-              <a href="https://guzo.netlify.app/">
+              <a href="https://gptclone.builtbyyeab.com/">
                 <i className="fa-solid fa-up-right-from-square"></i>
               </a>
-              <a href="https://github.com/Yeab0226/Guzo--travel-site-">
+              <a href="https://github.com/Yeab0226/gpt-clone.git">
                 <i className="fa-brands fa-github"></i>
               </a>
             </div>
@@ -381,17 +396,22 @@ function Portfolio() {
               if (event.pointerType !== "mouse") setRevealedCard(2);
             }}
           >
-            <img src="images/netflix-clone.png" alt="Netflix Clone" loading="lazy" decoding="async" />
+            <img
+              src="images/netflix-clone.webp"
+              alt="Netflix Clone"
+              loading="lazy"
+              decoding="async"
+            />
             <div className="layer">
               <h3>Netflix Clone</h3>
               <p>
                 A responsive Netflix-inspired website featuring movie
                 categories, featured titles, and a streaming-style interface.
               </p>
-              <a href="https://yeab0226.github.io/Netflix-landing-page-clone/">
+              <a href="https://netflix-clone.builtbyyeab.com/">
                 <i className="fa-solid fa-up-right-from-square"></i>
               </a>
-              <a href="https://github.com/Yeab0226/Netflix-landing-page-clone">
+              <a href="https://github.com/Yeab0226/Netflix-clone.git">
                 <i className="fa-brands fa-github"></i>
               </a>
             </div>
@@ -425,11 +445,14 @@ function Contact() {
         signal: AbortSignal.timeout(20000),
       });
       const result = await response.json();
-      if (!response.ok || result.success !== true) throw new Error("Send failed");
+      if (!response.ok || result.success !== true)
+        throw new Error("Send failed");
       setMessage("Thank you! Your message has been sent.");
       form.reset();
     } catch {
-      setMessage("Your message could not be sent. Please try again or email Yabsiraalemayehu@gmail.com directly.");
+      setMessage(
+        "Your message could not be sent. Please try again or email Yabsiraalemayehu@gmail.com directly.",
+      );
     } finally {
       submitting.current = false;
       setSending(false);
@@ -472,9 +495,20 @@ function Contact() {
           <div className="contact-right">
             <form name="contact" onSubmit={submitContact} aria-busy={sending}>
               <div hidden aria-hidden="true">
-                <label>Leave this empty<input name="website" tabIndex={-1} autoComplete="off" /></label>
+                <label>
+                  Leave this empty
+                  <input name="website" tabIndex={-1} autoComplete="off" />
+                </label>
               </div>
-              <input type="text" name="name" placeholder="Your Name" aria-label="Your name" autoComplete="name" maxLength={100} required />
+              <input
+                type="text"
+                name="name"
+                placeholder="Your Name"
+                aria-label="Your name"
+                autoComplete="name"
+                maxLength={100}
+                required
+              />
               <input
                 type="email"
                 name="email"
@@ -496,7 +530,9 @@ function Contact() {
                 {sending ? "Sending…" : "Submit"}
               </button>
             </form>
-            <span id="msg" role="status" aria-live="polite">{message}</span>
+            <span id="msg" role="status" aria-live="polite">
+              {message}
+            </span>
           </div>
         </div>
       </div>
@@ -577,8 +613,13 @@ function PageAppearance() {
     document.body.classList.toggle("construction-page", construction);
     document.title = construction ? "Services | BuiltByYeab" : "BuiltByYeab";
     const robots = document.querySelector('meta[name="robots"]');
-    if (robots) robots.content = construction || import.meta.env.VITE_PREVIEW === "true" ? "noindex, follow" : "index, follow, max-image-preview:large";
-    if (!window.location.hash) window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    if (robots)
+      robots.content =
+        construction || import.meta.env.VITE_PREVIEW === "true"
+          ? "noindex, follow"
+          : "index, follow, max-image-preview:large";
+    if (!window.location.hash)
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
   }, [pathname]);
   return null;
 }
@@ -595,10 +636,10 @@ export function SiteRoutes() {
             <>
               <Header />
               <main id="main-content">
-              <About />
-              <Services />
-              <Portfolio />
-              <Contact />
+                <About />
+                <Services />
+                <Portfolio />
+                <Contact />
               </main>
             </>
           }
@@ -609,5 +650,9 @@ export function SiteRoutes() {
 }
 
 export default function App() {
-  return <BrowserRouter><SiteRoutes /></BrowserRouter>;
+  return (
+    <BrowserRouter>
+      <SiteRoutes />
+    </BrowserRouter>
+  );
 }
