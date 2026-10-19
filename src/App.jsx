@@ -233,7 +233,7 @@ function About() {
                   Addis Ababa, Ethiopia
                 </li>
                 <li>
-                  <span>Web and Software developer (Intern)</span>
+                  <span>Fullstack developer (Intern)</span>
                   <br />
                   At Ministry of innovation and technology <br />
                   Addis Ababa, Ethiopia
